@@ -1,0 +1,14 @@
+{
+  "name": "our-savings",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A shared savings and spending tracker for two",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

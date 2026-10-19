@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f5" />
+    <meta
+      name="description"
+      content="A shared little space to keep track of your savings, goals, and everyday spending."
+    />
+    <title>Ours — money, together</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Ours home">
+          <span class="brand-mark" aria-hidden="true">o.</span>
+          <span>ours<span class="brand-period">.</span></span>
+        </a>
+
+        <div class="workspace-label">YOUR SPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#overview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="8" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="15" width="7" height="6" rx="2"/></svg>
+            Overview
+          </a>
+          <a class="nav-link" href="#activity">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17V7m5 10V4m6 13v-7m5 7V9"/></svg>
+            Activity
+          </a>
+          <a class="nav-link" href="#goals">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+            Our goals
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="couple-card">
+            <div class="avatar-pair" aria-hidden="true"><span>Y</span><span>+</span></div>
+            <div><strong>Your shared space</strong><span>Made for two</span></div>
+          </div>
+          <div class="privacy-note"><span class="live-dot"></span> Updates in real time</div>
+          <button class="share-button" id="share-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 7 6.6 4"/></svg>
+            Share this space
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content" id="overview">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark">o.</span><span>ours<span class="brand-period">.</span></span></div>
+          <div class="topbar-spacer"></div>
+          <div class="sync-indicator"><span class="live-dot"></span><span id="sync-status">Connected together</span></div>
+          <button class="icon-button mobile-share" id="mobile-share-button" type="button" aria-label="Share this space">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 7 6.6 4"/></svg>
+          </button>
+          <div class="profile-avatars" aria-label="Our shared space"><span>Y</span><span>+</span></div>
+        </header>
+
+        <section class="welcome-row">
+          <div>
+            <p class="eyebrow" id="today-label">YOUR MONEY, TOGETHER</p>
+            <h1>A little closer, <span>together.</span></h1>
+            <p class="welcome-copy">Every little bit adds up to something lovely.</p>
+          </div>
+          <button class="button button-dark" id="add-transaction-button" type="button">
+            <span class="plus-icon" aria-hidden="true">+</span> Add transaction
+          </button>
+        </section>
+
+        <section class="overview-grid" aria-label="Savings overview">
+          <article class="balance-card">
+            <div class="balance-top">
+              <span class="card-label card-label-light">OUR RESERVOIR</span>
+              <span class="balance-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 8.5h15a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h13"/><path d="M16 13h5"/><circle cx="16" cy="13" r=".7" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <div class="balance-amount" id="balance-amount">€0.00</div>
+            <p class="balance-caption">All your little bits, adding up.</p>
+            <div class="balance-footer"><span class="balance-sparkle">✳</span><span id="balance-caption">Your story starts here</span></div>
+          </article>
+
+          <article class="stat-card goal-stat">
+            <div class="stat-card-top">
+              <span class="card-label">END GOAL</span>
+              <button class="text-button" id="edit-plan-button" type="button">Edit plan <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="stat-amount" id="goal-amount">Set your goal</div>
+            <p class="stat-description" id="goal-date">A little dream, with a date.</p>
+            <div class="progress-track"><span class="progress-fill goal-progress" id="goal-progress"></span></div>
+            <div class="progress-meta"><span id="goal-progress-label">Your goal begins here</span><span id="goal-progress-percent">0%</span></div>
+          </article>
+
+          <article class="stat-card expense-stat">
+            <div class="stat-card-top">
+              <span class="card-label">EXPENSES</span>
+              <span class="round-icon expense-icon" aria-hidden="true">↗</span>
+            </div>
+            <div class="stat-amount" id="spent-amount">€0.00</div>
+            <p class="stat-description" id="budget-description">Spent this month</p>
+            <div class="progress-track"><span class="progress-fill expense-progress" id="budget-progress"></span></div>
+            <div class="progress-meta"><span id="budget-progress-label">Set a monthly plan</span><button class="inline-link" id="edit-budget-button" type="button">Edit plan</button></div>
+            <p class="cycle-note">Monthly total resets on the 1st. History stays.</p>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel activity-panel" id="activity">
+            <div class="section-heading">
+              <div><p class="eyebrow">THE LITTLE DETAILS</p><h2>Recent activity</h2></div>
+              <span class="activity-count" id="activity-count">0 entries</span>
+            </div>
+            <div class="activity-list" id="activity-list" aria-live="polite"></div>
+            <div class="empty-state" id="activity-empty">
+              <span class="empty-icon">✳</span>
+              <strong>Your story starts here</strong>
+              <span>Add a deposit or expense to see it here.</span>
+              <button class="text-button" id="empty-add-button" type="button">Add your first transaction <span aria-hidden="true">→</span></button>
+            </div>
+          </section>
+
+          <section class="panel goals-panel" id="goals">
+            <div class="section-heading">
+              <div><p class="eyebrow">LITTLE DREAMS, BIG PLANS</p><h2>Our goals</h2></div>
+              <span class="goals-icon" aria-hidden="true">✳</span>
+            </div>
+            <div class="featured-goal">
+              <div class="featured-goal-top"><span class="goal-pill">THE BIG ONE</span><span class="goal-heart">♥</span></div>
+              <strong id="featured-goal-title">Our end goal</strong>
+              <span id="featured-goal-caption">Every little bit brings it closer.</span>
+              <div class="featured-progress"><span id="featured-progress"></span></div>
+              <div class="featured-meta"><span id="featured-saved">€0.00 saved</span><span id="featured-target">Set a target</span></div>
+            </div>
+            <div class="todo-header"><strong>Along the way</strong><span id="todo-count">0 goals</span></div>
+            <p class="todo-reset-note">Fresh checklist on the 1st · Europe/Vienna</p>
+            <ul class="todo-list" id="todo-list"></ul>
+            <form class="todo-form" id="todo-form">
+              <label class="sr-only" for="todo-input">Add another little goal</label>
+              <input id="todo-input" name="title" maxlength="100" placeholder="Add another little goal..." autocomplete="off" />
+              <button type="submit" aria-label="Add goal">+</button>
+            </form>
+          </section>
+        </div>
+
+        <footer class="page-footer"><span>Made for the little things that become big things.</span><span class="footer-heart">♥</span></footer>
+      </main>
+    </div>
+
+    <dialog class="modal" id="transaction-modal">
+      <form class="modal-card" id="transaction-form">
+        <div class="modal-heading"><div><p class="eyebrow">A LITTLE UPDATE</p><h2>Add transaction</h2></div><button class="modal-close" type="button" data-close aria-label="Close">×</button></div>
+        <div class="segmented-control" role="group" aria-label="Transaction type">
+          <button class="segment active" type="button" data-kind="deposit">Deposit</button>
+          <button class="segment" type="button" data-kind="expense">Expense</button>
+        </div>
+        <input type="hidden" id="transaction-kind" value="deposit" />
+        <label class="field-label" for="transaction-amount">Amount</label>
+        <div class="amount-input"><span>€</span><input id="transaction-amount" name="amount" type="number" min="0.01" max="100000000" step="0.01" placeholder="0.00" required /></div>
+        <div id="expense-fields" class="form-row hidden">
+          <div class="field">
+            <label class="field-label" for="transaction-category">Label</label>
+            <select id="transaction-category" name="category">
+              <option>Rent</option><option>Groceries</option><option>Restaurant</option><option>Hobbies</option><option>School</option><option>Transport</option><option>Bills</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <label class="field-label" for="transaction-note" id="transaction-note-label">What was it for?</label>
+        <input class="text-input" id="transaction-note" name="note" maxlength="120" placeholder="A little note (optional)" />
+        <p class="form-error" id="transaction-error" role="alert"></p>
+        <button class="button button-dark modal-submit" type="submit">Add to our story</button>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="plan-modal">
+      <form class="modal-card" id="plan-form">
+        <div class="modal-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h2>Edit your plan</h2></div><button class="modal-close" type="button" data-close aria-label="Close">×</button></div>
+        <p class="modal-copy">Dream big, go at your own pace. You can change these any time.</p>
+        <label class="field-label" for="savings-target">Our end goal</label>
+        <div class="amount-input"><span>€</span><input id="savings-target" name="savingsTarget" type="number" min="0" max="100000000" step="0.01" placeholder="0.00" /></div>
+        <label class="field-label" for="goal-date-input">When are we hoping to get there?</label>
+        <input class="text-input" id="goal-date-input" name="targetDate" type="date" />
+        <label class="field-label" for="monthly-budget">Monthly spending plan</label>
+        <div class="amount-input"><span>€</span><input id="monthly-budget" name="monthlyBudget" type="number" min="0" max="100000000" step="0.01" placeholder="0.00" /></div>
+        <p class="form-error" id="plan-error" role="alert"></p>
+        <button class="button button-dark modal-submit" type="submit">Save our plan</button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
